@@ -66,21 +66,20 @@ Running the Inference
    Classification results saved to: prediction_outputs/classification_results.csv
 
 📊 Output Examples
-1️⃣ Visualization
+1. Visualization
+   Each image shows:
 
-Each image shows:
+   Left: Original MRI image with red overlay highlighting the predicted tumor region.
 
-Left: Original MRI image with red overlay highlighting the predicted tumor region.
+   Right: Predicted tumor class and model confidence.
 
-Right: Predicted tumor class and model confidence.
-
-2️⃣ CSV Output
+2. CSV Output
 image	class	probability
 patient_001	Glioma	0.9534
 patient_002	Meningioma	0.8772
 patient_003	Pituitary Tumor	0.9125
 
-🧱 Key Functions
+3. Key Functions
 Function	Description
 overlay_mask_on_image()	Blends segmentation mask on top of the original MRI image using transparency.
 save_visualization()	Creates side-by-side visualization of overlay + class info.
@@ -89,7 +88,7 @@ tqdm	Displays progress bar during inference loop.
 
 👩‍💻 Author
 
-Your Name
-📧 guthikondaPragna.com
+Guthikonda Pragna
+Email: guthikondaPragna.com
 
-💼 GitHub: PRAGNA_105
+GitHub: PRAGNA_105
