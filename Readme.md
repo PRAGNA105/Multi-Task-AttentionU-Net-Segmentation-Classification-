@@ -27,68 +27,108 @@ project_root/
 ├── classification_results.csv # Saved CSV with predictions
 └── visualizations/ # Contains overlay images
 
+yaml
+Copy code
 
 ---
 
 ## ⚙️ Installation
 
-1. Clone this repository
+1. **Clone this repository**
    ```bash
    git clone https://github.com/yourusername/brain-tumor-inference.git
    cd brain-tumor-inference
+Create a virtual environment (optional but recommended)
 
-2. Create a virtual environment (optional but recommended)
-   python -m venv venv
-   source venv/bin/activate       # On macOS/Linux
-   venv\Scripts\activate          # On Windows
+bash
+Copy code
+python -m venv venv
+source venv/bin/activate       # On macOS/Linux
+venv\Scripts\activate          # On Windows
+Install dependencies
 
-3.Install dependencies
-   pip install -r requirements.txt
+bash
+Copy code
+pip install -r requirements.txt
+If you don’t have a requirements.txt, install manually:
 
-   If you don’t have a requirements.txt, install manually:
+bash
+Copy code
+pip install numpy pandas pillow matplotlib tqdm
+🧠 Running the Inference
+Place your trained model and input images in appropriate folders (e.g., model/ and data/).
 
-   pip install numpy pandas pillow matplotlib tqdm
+Update the all_data list and run_inference() function inside the script to load your data and model.
 
+Run the script:
 
-Running the Inference
+bash
+Copy code
+python inference_script.py
+Once complete, you’ll see:
 
-1. Place your trained model and input images in appropriate folders (e.g., model/ and data/).
+bash
+Copy code
+✅ All done! Visualizations saved to 'prediction_outputs/visualizations'
+📄 Classification results saved to: prediction_outputs/classification_results.csv
+🖼️ Example Output Visualization
+Below is an example visualization of the model’s output.
+The left side shows the MRI image with the tumor segmentation overlay, and the right side shows the predicted tumor class and confidence score.
 
-2. Update the all_data list and run_inference() function inside the script to load your data and model.
-
-3. Run the script:
-
-  python inference_script.py
- 
-
-4.Once complete, you’ll see:
-   All done! Visualizations saved to 'prediction_outputs/visualizations'
-   Classification results saved to: prediction_outputs/classification_results.csv
+<p align="center"> <img src="prediction_outputs/visualizations/sample_result.png" alt="Example Overlay Visualization" width="600"/> </p>
+If your visualization image is stored elsewhere, update the image path above (e.g., images/overlay_example.png).
 
 📊 Output Examples
-1. Visualization
-   Each image shows:
+1️⃣ Visualization
+Each image shows:
 
-   Left: Original MRI image with red overlay highlighting the predicted tumor region.
+Left: Original MRI image with red overlay highlighting the predicted tumor region.
 
-   Right: Predicted tumor class and model confidence.
+Right: Predicted tumor class and model confidence.
 
-2. CSV Output
+2️⃣ CSV Output
 image	class	probability
 patient_001	Glioma	0.9534
 patient_002	Meningioma	0.8772
-patient_003	Pituitary Tumor	0.9125
 
-3. Key Functions
+🧱 Key Functions
 Function	Description
 overlay_mask_on_image()	Blends segmentation mask on top of the original MRI image using transparency.
 save_visualization()	Creates side-by-side visualization of overlay + class info.
 run_inference()	(To be defined) Loads model, predicts segmentation mask, class, and confidence.
 tqdm	Displays progress bar during inference loop.
 
+🧰 Requirements
+Library	Version (Suggested)
+Python	3.8+
+numpy	>=1.23
+pandas	>=1.4
+pillow	>=9.2
+matplotlib	>=3.5
+tqdm	>=4.64
+
+💡 Notes
+The run_inference() function should return:
+
+python
+Copy code
+mask_image, predicted_class, class_prob
+mask_image: predicted segmentation mask (as a PIL image)
+
+predicted_class: tumor type (string)
+
+class_prob: probability (float between 0–1)
+
+The script expects masks with pixel values 0–255.
+
+🏁 Results
+Visual Overlays → prediction_outputs/visualizations/
+
+Classification CSV → prediction_outputs/classification_results.csv
+
+Both files are automatically generated at the end of execution.
+
 👩‍💻 Author
-
-Guthikonda Pragna
-Email: guthikondaPragna.com
-
-GitHub: PRAGNA_105
+Guthikonda PRagna
+📧 guthikondapragnagmail.com
+💼 GitHub: PRAGNA_!05
